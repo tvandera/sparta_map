@@ -18,7 +18,7 @@
 TEST_INIT;
 
 // Test result constants
-const uint32_t EXPECTED_NUM_PARAMS = 57;
+const uint32_t EXPECTED_NUM_PARAMS = 59;
 const uint32_t EXPECTED_BOUND_TYPES = 14;
 
 class ExampleSimulator : public sparta::app::Simulation{
@@ -737,6 +737,8 @@ int main ()
     EXPECT_NOTHROW(sca_bool = sps->test_bool);
     EXPECT_TRUE(sca_bool == true);
     EXPECT_EQUAL(sps->test_bool, true);
+    EXPECT_EQUAL(sps->test_bool_Fstr, false);
+    EXPECT_EQUAL(sps->test_bool_Tstr, true);
     EXPECT_EQUAL(gps->getParameterValueAs<bool>("test_bool"), true);
     EXPECT_EQUAL(gps->getParameter("test_bool")->getValueAs<bool>(), true);
     EXPECT_THROW(gps->getParameter("test_bool")->getValueAs<uint32_t>());
@@ -819,13 +821,13 @@ int main ()
     std::cout << "result of search for \"lengt*\": " << result1 << std::endl << std::endl;
 
     result1.clear();
-    EXPECT_EQUAL((gps->findParameters("test_*", result1)), 15u);
-    EXPECT_EQUAL(result1.size(), (size_t)15);
+    EXPECT_EQUAL((gps->findParameters("test_*", result1)), 17u);
+    EXPECT_EQUAL(result1.size(), (size_t)17);
     std::cout << "result of search for \"test_*\": " << result1 << std::endl << std::endl;
 
     result1.clear();
-    EXPECT_EQUAL((gps->findParameters("*st_*", result1)), 15u);
-    EXPECT_EQUAL(result1.size(), (size_t)15);
+    EXPECT_EQUAL((gps->findParameters("*st_*", result1)), 17u);
+    EXPECT_EQUAL(result1.size(), (size_t)17);
     std::cout << "result of search for \"*st_*\": " << result1 << std::endl << std::endl;
 
     result1.clear();
@@ -856,8 +858,8 @@ int main ()
     // Result count should be total params multiplied by number of params
     // beginning with test_
     result1.clear();
-    EXPECT_EQUAL((gps->findParameters("*..test_*", result1)), (uint32_t)EXPECTED_NUM_PARAMS * 15);
-    EXPECT_EQUAL(result1.size(), (size_t)EXPECTED_NUM_PARAMS * 15);
+    EXPECT_EQUAL((gps->findParameters("*..test_*", result1)), (uint32_t)EXPECTED_NUM_PARAMS * 17);
+    EXPECT_EQUAL(result1.size(), (size_t)EXPECTED_NUM_PARAMS * 17);
     std::cout << "result of search for \"*..test_*\": " << result1 << std::endl << std::endl;
 
     // Will find test_int64, test_uint64, test_int64vec, and test_uint64vec
