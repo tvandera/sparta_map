@@ -2168,6 +2168,46 @@ void report_trigger_config_inspection()
     }
 }
 
+void test_metadata_addition()
+{
+    PRINT_ENTER_TEST
+
+    RootTreeNode root("top");
+    TreeNode core0(&root, "core0", "Core 0");
+    TreeNode core1(&root, "core1", "Core 1");
+    StatisticSet sset0(&core0);
+    StatisticSet sset1(&core1);
+
+    Scheduler scheduler("test");
+    std::shared_ptr<sparta::Clock> root_clk(
+        std::make_shared<sparta::Clock>("test_clock", &scheduler));
+    scheduler.finalize();
+    root.setClock(root_clk.get());
+    core0.setClock(root_clk.get());
+    core1.setClock(root_clk.get());
+
+    Counter core0_counter(&sset0, "c0", "Counter 0", Counter::COUNT_NORMAL);
+    Counter core1_counter(&sset1, "c1", "Counter 1", Counter::COUNT_NORMAL);
+
+    const std::string report_def = R"(
+content:
+    metadata:
+        poop: 1
+    subreport:
+        name: "SR1, [start @ 7, end @ 12]"
+        trigger:
+            start: "core0.stats.c0 >= 7"
+            stop:  "core0.stats.c0 >= 12"
+        core0:
+            autopopulate: true
+)";
+
+    Report r("Test");
+    r.setContext(&root);
+    r.addDefinitionString(report_def, true);
+    root.enterTeardown();
+}
+
 int main()
 {
     independent_computation_windows_basic();
@@ -2205,6 +2245,8 @@ int main()
     cumulative_statistics_start_from_zero();
 
     report_trigger_config_inspection();
+
+    test_metadata_addition();
 
     REPORT_ERROR;
     return ERROR_CODE;

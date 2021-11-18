@@ -94,11 +94,11 @@ void tryStatisticDef2()
     root.enterConfiguring();
     root.enterFinalized();
     EXPECT_THROW(try{
-                     root.validatePreRun();
-                 }catch(...){
-                     root.enterTeardown();
-                     throw;
-                 });
+            root.validatePreRun();
+        }catch(...){
+            root.enterTeardown();
+            throw;
+        });
 }
 
 /*!
@@ -126,11 +126,11 @@ void tryStatisticDef3()
     root.enterConfiguring();
     root.enterFinalized();
     EXPECT_THROW(try{
-                     root.validatePreRun();
-                 }catch(...){
-                     root.enterTeardown();
-                     throw;
-                 });
+            root.validatePreRun();
+        }catch(...){
+            root.enterTeardown();
+            throw;
+        });
 }
 
 /*!
@@ -159,11 +159,11 @@ void tryStatisticDef4()
     root.enterConfiguring();
     root.enterFinalized();
     EXPECT_THROW(try{
-                     root.validatePreRun();
-                 }catch(...){
-                     root.enterTeardown();
-                     throw;
-                 });
+            root.validatePreRun();
+        }catch(...){
+            root.enterTeardown();
+            throw;
+        });
 }
 
 /*!
@@ -264,15 +264,48 @@ void tryReportWithOptions(bool option_exists)
     root.enterTeardown();
 }
 
+void testMetaData()
+{
+    sparta::Scheduler sched;
+    RootTreeNode root(sched.getSearchScope());
+
+    sparta::ClockManager  m(&sched);
+    Clock::Handle c_root  = m.makeRoot();
+    root.setClock(c_root.get());
+
+    TreeNode core0(&root, "core0", "Core 0");
+    StatisticSet sset0(&core0);
+    Counter c1(&sset0, "c1", "Counter 1 (NORMAL VIS)",  Counter::COUNT_NORMAL, sparta::InstrumentationNode::VIS_NORMAL);
+    Counter c2(&sset0, "c2", "Counter 2 (SUMMARY VIS)", Counter::COUNT_NORMAL, sparta::InstrumentationNode::VIS_SUMMARY);
+
+    Report meta("report 3", &root);
+    meta.addFile("test_metadata.yaml", true); // verbose
+
+    meta.start();
+
+    root.enterConfiguring();
+    root.enterFinalized();
+
+    c1 += 2;
+    c2 += 4;
+    sparta::report::format::Text txt(&meta, "test_metadata.txt", std::ios::out);
+    txt.setShowSimInfo(true);
+    txt.write();
+
+    sparta::report::format::CSV csv(&meta, "test_metadata.csv", std::ios::out);
+    csv.write();
+
+    root.enterTeardown();
+}
 
 int main()
 {
     // Observe all warnings
     sparta::log::Tap warnings(sparta::TreeNode::getVirtualGlobalNode(),
-                            sparta::log::categories::WARN,
-                            std::cerr);
+                              sparta::log::categories::WARN,
+                              std::cerr);
     sparta::Scheduler sched;
-    Report r("Report 0", nullptr, &sched); // Report which outlives the tree
+    Report r0("Report 0", nullptr, &sched); // Report which outlives the tree
     sched.finalize();
 
     // proceed to tick 1, nothing should happen, but time advancement
@@ -376,51 +409,51 @@ int main()
         r1.add(root.getChildAs<Counter>("core0.stats.c2"));
 
 
-        // Report 0
+        // Report 2
 
-        r.setContext(root.getChild("core0.stats"));
-        r.add("c1"); // top.stats.bar
+        r0.setContext(root.getChild("core0.stats"));
+        r0.add("c1"); // top.stats.bar
 
-        r.setContext(root.getChild("core0.stats"));
-        r.add("s1"); // top.stats.bar
+        r0.setContext(root.getChild("core0.stats"));
+        r0.add("s1"); // top.stats.bar
 
         std::cout << "The tree from the top with builtins: " << std::endl
                   << root.renderSubtree(-1, true) << std::endl;
 
         // Creates more stat instances based on this report
         // Load the file based on the root context
-        r.setContext(root.getSearchScope());
-        std::cout << "\n\nr before adding file:\n" << r << std::endl;
-        r.addFile("test_report.yaml",
-                  true); // verbose
-        std::cout << "\n\nr after adding file:\n" << r << std::endl;
+        r0.setContext(root.getSearchScope());
+        std::cout << "\n\nr before adding file:\n" << r0 << std::endl;
+        r0.addFile("test_report.yaml",
+                   true); // verbose
+        std::cout << "\n\nr after adding file:\n" << r0 << std::endl;
 
-        EXPECT_TRUE(r.hasStatistic("stat3"));
-        EXPECT_NOTHROW( EXPECT_NOTEQUAL(r.getStatistic("stat3").getCounter(), nullptr));
-        EXPECT_NOTHROW( EXPECT_EQUAL(r.getStatistic("stat3").getCounter(), core0.getChild("stats.c3")));
-        EXPECT_THROW(r.add(core0.getChild("stats.s2"), "stat3")); // "stat3" key exists in this report
-        EXPECT_THROW(r.add(core0.getChild("stats.does_not_exist"), "unique_stat_name")); // Cannot find this stat
+        EXPECT_TRUE(r0.hasStatistic("stat3"));
+        EXPECT_NOTHROW( EXPECT_NOTEQUAL(r0.getStatistic("stat3").getCounter(), nullptr));
+        EXPECT_NOTHROW( EXPECT_EQUAL(r0.getStatistic("stat3").getCounter(), core0.getChild("stats.c3")));
+        EXPECT_THROW(r0.add(core0.getChild("stats.s2"), "stat3")); // "stat3" key exists in this report
+        EXPECT_THROW(r0.add(core0.getChild("stats.does_not_exist"), "unique_stat_name")); // Cannot find this stat
 
         // Add to a report with convenient call chaining
-        r.setContext(&core0);
-        r.add("stats.s2")
-             (core0.getChild("stats.s3"))
-             ("stats.s4")
-             ("cycles(stats.c1)") // Unnamed expression
-             ("cycles") // Unnamed expression
-             ;
+        r0.setContext(&core0);
+        r0.add("stats.s2")
+            (core0.getChild("stats.s3"))
+            ("stats.s4")
+            ("cycles(stats.c1)") // Unnamed expression
+            ("cycles") // Unnamed expression
+            ;
 
-        EXPECT_EQUAL(r.getSubreportDepth(), 1);
-        EXPECT_EQUAL(r.getNumStatistics(), 13);
-        EXPECT_EQUAL(r.getRecursiveNumStatistics(), 32);
-        EXPECT_EQUAL(r.getNumSubreports(), 2);
+        EXPECT_EQUAL(r0.getSubreportDepth(), 1);
+        EXPECT_EQUAL(r0.getNumStatistics(), 13);
+        EXPECT_EQUAL(r0.getRecursiveNumStatistics(), 32);
+        EXPECT_EQUAL(r0.getNumSubreports(), 2);
 
-        std::cout << "r\n" << r << std::endl;
+        std::cout << "r\n" << r0 << std::endl;
 
 
         // Report 3
 
-        Report r3(r); // Copy of r
+        Report r3(r0); // Copy of r
         r3.setName("Report 3");
         EXPECT_EQUAL(r3.getName(), "Report 3");
         r3.setContext(&root);
@@ -436,7 +469,7 @@ int main()
         // Report 4
 
         Report r4("Report 4", nullptr, &sched);
-        r4.copyFromReport(r); // Copy of r
+        r4.copyFromReport(r0); // Copy of r
         Report& r4_1 = r4.addSubreport("Report 4.1");
         r4_1.add(core0.getChild("stats.c1"));
         EXPECT_EQUAL(r4.getSubreportDepth(), 1);
@@ -494,7 +527,7 @@ int main()
         // Report using a string
 
         const std::string report_def =
-R"(name: "String-based report Autopopulation Test"
+            R"(name: "String-based report Autopopulation Test"
 style:
     decimal_places: 3
 content:
@@ -544,7 +577,7 @@ content:
         sparta::report::format::CSV empty_report_csv(&r10_empty, "empty.csv", std::ios::out);
         empty_report_csv.write();
 
-        Report r1_cp(r);
+        Report r1_cp(r0);
         r1_cp.setContext(root.getSearchScope());
         r1_cp.addFile("test_csv_subreport_test.yaml");
         sparta::report::format::CSV r1_subreport_test(&r1_cp, "test_csv_subreport.csv", std::ios::out);
@@ -557,9 +590,9 @@ content:
         c2 += 2;
         c3 += 3;
         c4_val += 4;
-        r.start();
-        std::cout << r << std::endl;
-        EXPECT_EQUAL(r.getStatistic(0).getValue(), 0);
+        r0.start();
+        std::cout << r0 << std::endl;
+        EXPECT_EQUAL(r0.getStatistic(0).getValue(), 0);
         periodic_csv.update();
 
         sched.run(20, true); // Run UP TO tick 40, but not tick 40
@@ -567,64 +600,66 @@ content:
         c2 += 2;
         c3 += 3;
         c4_val += 4;
-        std::cout << r << std::endl;
-        EXPECT_EQUAL(r.getStatistic(0).getValue(), 1);
+        std::cout << r0 << std::endl;
+        EXPECT_EQUAL(r0.getStatistic(0).getValue(), 1);
         periodic_csv.update();
 
         // Update c5 before ending the report
         c5_val = BIG_COUNTER_VAL;
         EXPECT_EQUAL(c5.get(), BIG_COUNTER_VAL);
-        EXPECT_EQUAL(r.getStatistic("stat5").getValue(), BIG_COUNTER_VAL); // Must be isntantaneous value, NOT delta because c5 is a COUNT_LATEST
+        EXPECT_EQUAL(r0.getStatistic("stat5").getValue(), BIG_COUNTER_VAL); // Must be isntantaneous value, NOT delta because c5 is a COUNT_LATEST
 
-        r.end();
-        std::cout << "Ended report\n" << r << std::endl;
-        EXPECT_EQUAL(r.getStatistic(0).getValue(), 1);
+        r0.end();
+        std::cout << "Ended report\n" << r0 << std::endl;
+        EXPECT_EQUAL(r0.getStatistic(0).getValue(), 1);
 
         sched.run(20, true);
         ++c1;
         c2 += 2;
         c3 += 3;
         c4_val += 4;
-        std::cout << r << std::endl;
-        EXPECT_EQUAL(r.getStatistic(0).getValue(), 1); // Same value because report ended
+        std::cout << r0 << std::endl;
+        EXPECT_EQUAL(r0.getStatistic(0).getValue(), 1); // Same value because report ended
         periodic_csv.update();
 
 
         // Write report to a few files
 
         // dumb "dump" of report directly (no formatter)
-        std::ofstream("test_report_out", std::ios::out) << r;
+        std::ofstream("test_report_out", std::ios::out) << r0;
         std::ofstream("test_wildcard_report_out", std::ios::out) << r5;
 
         // Write formatted report to ostream using operator<<
-        sparta::report::format::BasicHTML html_1(&r);
+        sparta::report::format::BasicHTML html_1(&r0);
         html_1.setShowSimInfo(false);
         std::ofstream("test_report_out.html", std::ios::out) << html_1;
 
-        sparta::report::format::Gnuplot gplt_1(&r);
+        sparta::report::format::Gnuplot gplt_1(&r0);
         std::ofstream("test_report_out.gplt", std::ios::out) << gplt_1;
 
 
         // Write report using the "write" function of a formatter
         std::ofstream out_html("test_report_out2.html", std::ios::out);
-        sparta::report::format::BasicHTML html_2(&r, out_html);
+        sparta::report::format::BasicHTML html_2(&r0, out_html);
         html_2.setShowSimInfo(false);
         html_2.write();
 
         // Write to file based on filenamep
         sparta::report::format::BasicHTML wcr_html(&r5,
-                                                 "test_wildcard_report_out.html",
-                                                 std::ios::out);
+                                                   "test_wildcard_report_out.html",
+                                                   std::ios::out);
         wcr_html.setShowSimInfo(false);
         wcr_html.write();
 
         // Write formatter using writeTo Note that this needs a clear
-        {std::ofstream("test_report_out.csv", std::ios::out);} // Clear
-        sparta::report::format::CSV r_csv(&r);
+        {
+            std::ofstream("test_report_out.csv", std::ios::out);
+        } // Clear
+        sparta::report::format::CSV r_csv(&r0);
         r_csv.writeTo("test_report_out.csv");
 
         // Write using temporary formatter
-        sparta::report::format::Text txt(&r, "test_report_out.txt", std::ios::out);
+        sparta::report::format::Text txt(&r0, "test_report_out.txt", std::ios::out);
         txt.setShowSimInfo(false);
         txt.write();
 
@@ -674,19 +709,19 @@ content:
         EXPECT_FILES_EQUAL("test_autopopulate_multi_nested.txt", "test_autopopulate_multi_nested.txt.EXPECTED");
         EXPECT_FILES_EQUAL("test_periodic.csv",                  "test_periodic.csv.EXPECTED")
 
-        // Print out some info about the report
-        std::cout << "Context            : " << r.getContext() << std::endl;
-        std::cout << "Name               : " << r.getName() << std::endl;
-        std::cout << "Start              : " << r.getStart() << std::endl;
-        std::cout << "End                : " << r.getEnd() << std::endl;
-        const auto& subreps = r.getSubreports();
+            // Print out some info about the report
+        std::cout << "Context            : " << r0.getContext() << std::endl;
+        std::cout << "Name               : " << r0.getName() << std::endl;
+        std::cout << "Start              : " << r0.getStart() << std::endl;
+        std::cout << "End                : " << r0.getEnd() << std::endl;
+        const auto& subreps = r0.getSubreports();
         (void) subreps;
-        std::cout << "Num subreports     : " << r.getNumSubreports() << std::endl;
-        std::cout << "Subreport depth    : " << r.getSubreportDepth() << std::endl;
-        const std::vector<Report::stat_pair_t>& immediate_stats = r.getStatistics();
+        std::cout << "Num subreports     : " << r0.getNumSubreports() << std::endl;
+        std::cout << "Subreport depth    : " << r0.getSubreportDepth() << std::endl;
+        const std::vector<Report::stat_pair_t>& immediate_stats = r0.getStatistics();
         (void) immediate_stats;
-        std::cout << "Num immediate stats: " << r.getNumStatistics() << std::endl;
-        std::cout << "Num recursive stats: " << r.getRecursiveNumStatistics() << std::endl;
+        std::cout << "Num immediate stats: " << r0.getNumStatistics() << std::endl;
+        std::cout << "Num recursive stats: " << r0.getRecursiveNumStatistics() << std::endl;
 
 
         // Render Tree for information purposes
@@ -701,10 +736,12 @@ content:
         root.enterTeardown();
     }
 
+    testMetaData();
+
     // Done
 
     // Make sure this does not crash - disregard actual content for now
-    EXPECT_NOTHROW( std::ofstream("immortal_report.txt", std::ios::out) << r; );
+    EXPECT_NOTHROW( std::ofstream("immortal_report.txt", std::ios::out) << r0; );
 
     // Report errors before drawing trees in case any nodes were attached which
     // should not have been.
