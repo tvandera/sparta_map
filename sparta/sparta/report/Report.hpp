@@ -1244,6 +1244,21 @@ namespace sparta
         }
 
         /*!
+         * \brief Add metadata to the report
+         * \param name The metadata name
+         * \param value The metadata value
+         *
+         * This is user-supplied name/value pairs that mean nothing to
+         * Sparta nor the Report.  Useful for adding specific
+         * information to a report without having to create special
+         * StatisticInstance types.
+         */
+        void addMetaData(const std::string& name, const std::string & value) {
+            metadata_[name] = value;
+        }
+
+
+        /*!
          * \brief Sets a particular style attribute on this report
          * \param style Style attribute to set
          * \param value Valut to associate with the \a style attribute
@@ -1559,6 +1574,11 @@ namespace sparta
          * \brief Author of this report
          */
         std::string author_;
+
+        /*!
+         * \brief Metadata associated with this report
+         */
+        std::map<std::string, std::string> metadata_;
 
         /*!
          * \brief Styles associated with this report

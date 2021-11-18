@@ -143,6 +143,7 @@ class ReportFileParserYAML
          * If the report is to be triggered, the trigger definitions should be found
          * at the root level of the report/subreport ONLY:
          *
+         * \code
          *      subreport:
          *          name: Core 0 stats
          *          trigger:
@@ -157,10 +158,28 @@ class ReportFileParserYAML
          *              start: "core1.rob.stats.total_number_retired >= 2500"
          *          core1:
          *              include: stats.yaml
+         * \endcode
          *
          * Will throw an exception. Nested triggers are not supported.
          */
         std::unique_ptr<std::unordered_map<std::string, std::string>> trigger_defn_;
+
+        /*!
+         * \brief Added metadata to the Report definition (name/value pairs)
+         *
+         * If the report contains the keyword 'metadata', any scalar
+         * value listed in that context will be consumed raw and
+         * placed in a "metadata" section of a report as-is.
+         *
+         * \code
+         * metadata:
+         *    my_value1: "My Statement"
+         *    my_value2: 5000
+         * content:
+         *    ...
+         * \endcode
+         */
+        std::unique_ptr<std::unordered_map<std::string, std::string>> metadata_block_;
 
         //! \brief Keyword for a new top-level report
         static constexpr char KEY_REPORT[] = "report";
@@ -188,6 +207,9 @@ class ReportFileParserYAML
 
         //! \brief Maximum subtree depth key (within autopopulate)
         static constexpr char KEY_AUTOPOPULATE_MAX_REPORT_DEPTH[] = "max_report_depth";
+
+        //! \brief Meta Data key
+        static constexpr char KEY_METADATA[] = "metadata";
 
         //! \brief Style block key
         static constexpr char KEY_STYLE[] = "style";
@@ -258,7 +280,7 @@ class ReportFileParserYAML
 
             if(style_block_ != nullptr){
                 // Handle style. This is also done in handleLeafScalarUnknownKey_
-                verbose() << indent_() << "Got style \"" << assoc_key << " = \"" << value << "\""
+                verbose() << __FUNCTION__ << indent_() << "Got style \"" << assoc_key << " = \"" << value << "\""
                           << std::endl;
                 (*style_block_)[assoc_key] = value;
             }else if(current_autopop_block_.size() > 0){
@@ -277,7 +299,7 @@ class ReportFileParserYAML
                 }
             }else if(assoc_key == KEY_NAME){
                 if(r->getName() != ""){
-                    verbose() << indent_() << "Warning: A current report being renamed from \""
+                    verbose() << __FUNCTION__ << indent_() << "Warning: A current report being renamed from \""
                         << r->getName() << "\" to \"" << value << "\"" << " because a name key was "
                         "found when the report already had a name. This probably happened "
                         "because a \"name:\" was specified twice within the report or a "
@@ -287,19 +309,21 @@ class ReportFileParserYAML
                 if(replaceByIndex(full_name, n, captures)){
                     r->setName(full_name);
                 }
-                verbose() << indent_() << "  Updated name of report: " << r << std::endl;
+                verbose() << __FUNCTION__ << indent_() << "  Updated name of report: " << r << std::endl;
             }else if(assoc_key == KEY_AUTHOR){
                 if(r->getAuthor() != ""){
-                    verbose() << indent_() << "Warning: Report being re-authored from \""
+                    verbose() << __FUNCTION__ << indent_() << "Warning: Report being re-authored from \""
                         << r->getAuthor() << "\" to \"" << value << "\"" << " because an author "
                         "key was found when the report already had an author" << std::endl;
                 }
                 r->setAuthor(value);
-                verbose() << indent_() << "  Updated author of report: " << r << std::endl;
+                verbose() << __FUNCTION__ << indent_() << "  Updated author of report: " << r << std::endl;
             }else if(assoc_key == KEY_AUTOPOPULATE){
                 r->autoPopulate(n, value, captures, -1, -1);
+            }else if(assoc_key == KEY_METADATA){
+                std::cout << "Metadata! 1" << std::endl;
             }else{
-                verbose() << indent_() << "Got leaf scalar at " << *n << " with value = \"" << value
+                verbose() << __FUNCTION__ << indent_() << "Got leaf scalar at " << *n << " with value = \"" << value
                           << "\" and key \"" << assoc_key << "\" in report " << *r << std::endl;
 
                 if(in_content){
@@ -490,14 +514,19 @@ class ReportFileParserYAML
             }else{
                 if(style_block_ != nullptr){
                     // Handle style. This is also done in handleLeafScalar_
-                    verbose() << indent_() << "Got style \"" << assoc_key << " = \"" << value
+                    verbose() << __FUNCTION__ << indent_() << "Got style \"" << assoc_key << " = \"" << value
                               << "\"" << std::endl;
                     (*style_block_)[assoc_key] = value;
                     return true;
                 }
-                if (trigger_defn_ != nullptr) {
-                    verbose() << indent_() << "Got trigger definition -> " << assoc_key << ": '" << value << "'";
+                else if (trigger_defn_ != nullptr) {
+                    verbose() << __FUNCTION__ << indent_() << "Got trigger definition -> " << assoc_key << ": '" << value << "'";
                     (*trigger_defn_)[assoc_key] = value;
+                    return true;
+                }
+                else if (metadata_block_ != nullptr) {
+                    verbose() << __FUNCTION__ << indent_() << "Metadata block content -> " << assoc_key << ": '" << value << "'";
+                    (*metadata_block_)[assoc_key] = value;
                     return true;
                 }
             }
@@ -544,7 +573,7 @@ class ReportFileParserYAML
             if(false == boost::filesystem::is_regular_file(filepath.native())){
                 boost::filesystem::path curfile(getFilename());
                 filepath = curfile.parent_path() / filename;
-                verbose() << "Note: file \"" << filename << "\" does not exist. Attempting to "
+                verbose() << __FUNCTION__ << "Note: file \"" << filename << "\" does not exist. Attempting to "
                              "open \"" << filepath.native() << "\" instead" << std::endl;
             }
 
@@ -553,7 +582,7 @@ class ReportFileParserYAML
 
             bool in_content = in_content_stack_.top();
 
-            verbose() << indent_() << "Handling include directive at context=" << device_trees
+            verbose() << __FUNCTION__ << indent_() << "Handling include directive at context=" << device_trees
                       << std::endl;
 
             //Report* const r = report_stack_.top();
@@ -596,6 +625,7 @@ class ReportFileParserYAML
                     || key == KEY_AUTOPOPULATE_ATTRIBUTES
                     || key == KEY_AUTOPOPULATE_MAX_RECURSION_DEPTH
                     || key == KEY_AUTOPOPULATE_MAX_REPORT_DEPTH
+                    || key == KEY_METADATA
                     || key == KEY_STYLE
                     || key == KEY_TRIGGER);
         }
@@ -664,7 +694,7 @@ class ReportFileParserYAML
 
                 if(key == KEY_SUBREPORT){
                     // Create a new sub-report
-                    verbose() << indent_() << "Creating a new report for context: " << context << std::endl;
+                    verbose() << __FUNCTION__ << indent_() << "Creating a new report for context: " << context << std::endl;
 
                     for(auto& cx : context){
                         if(largest_context_uid_ == MAX_NAV_NODE_UID){
@@ -693,7 +723,7 @@ class ReportFileParserYAML
                         // overridden getNextNodeID_.
                         //////cx->uid = largest_context_uid_; // Update user data in context to contain UID to this report.
                         next_uid_map_[{cx->uid, cx->first}] = largest_context_uid_;
-                        verbose() << indent_() << "Inserting new entry {uid=" << cx->uid << ", node="
+                        verbose() << __FUNCTION__ << indent_() << "Inserting new entry {uid=" << cx->uid << ", node="
                                   << cx->first << "} -> " << largest_context_uid_ << " into next_uid_map_ when creating subreport. map size = "
                                   << next_uid_map_.size() << std::endl;
 
@@ -708,16 +738,31 @@ class ReportFileParserYAML
                     // Make size of the autopop args block nonzero to
                     // indicate it is open.
                     current_autopop_block_["current"] = "";
-                    verbose() << indent_() << " handleEnterMap_ got a key KEY_AUTOPOPULATE"
+                    verbose() << __FUNCTION__ << indent_() << " handleEnterMap_ got a key KEY_AUTOPOPULATE"
                               << std::endl;
                     return false;
                 }else if(key == KEY_CONTENT){
                     std::stringstream ss;
                     ss << "Unexpected key \"content\" within a \"content\" section";
                     addError_(ss.str());
+                }else if(key == KEY_METADATA){
+                    if(nullptr != metadata_block_) {
+                        std::stringstream ss;
+                        ss << "Already have a metadata block defined when encountered a new one";
+                        addError_(ss.str());
+                    }
+                    else {
+                        metadata_block_.reset(new typename decltype(metadata_block_)::element_type());
+                        in_content_stack_.push(false);
+                        return false;
+                    }
                 }
+
                 return true; // Handle normally
-            }else{
+            }
+            // !in_content
+            else
+            {
                 if(key == KEY_SUBREPORT){
                     throw SpartaException("Unexpected key \"") << KEY_SUBREPORT << "\" outside of a "
                         "\"content\" section. Report definition files that are not included by "
@@ -726,6 +771,10 @@ class ReportFileParserYAML
                 }else if(key == KEY_CONTENT){
                     // Entered the content section of the report
                     in_content_stack_.push(true);
+                    return false;
+                }else if(key == KEY_METADATA){
+                    metadata_block_.reset(new typename decltype(metadata_block_)::element_type());
+                    in_content_stack_.push(false);
                     return false;
                 }else if(key == KEY_STYLE){
                     // Entered a style block
@@ -763,7 +812,7 @@ class ReportFileParserYAML
             sparta_assert(!in_content_stack_.empty());
             bool in_content = in_content_stack_.top(); // Use parent's prior in_content state
 
-            verbose() << indent_() << "handleExitMap_ with key = \"" << key << "\" and in_content = "
+            verbose() << __FUNCTION__ << indent_() << "handleExitMap_ with key = \"" << key << "\" and in_content = "
                       << in_content << " and current_autopop_block_.size() = "
                       << current_autopop_block_.size() << std::endl;
 
@@ -785,7 +834,7 @@ class ReportFileParserYAML
                 in_content_stack_.push(true); // Still in content
                 if(key == KEY_SUBREPORT){
                     // Close off reports in current context
-                    verbose() << indent_() << "Exiting construction of subreports for context: "
+                    verbose() << __FUNCTION__ << indent_() << "Exiting construction of subreports for context: "
                               << context << std::endl;
 
                     for(auto& cx : context){
@@ -793,7 +842,7 @@ class ReportFileParserYAML
                         // entries from the map to guarantee they won't be executed later
                         Report* const r = report_map_.at(cx->uid); // Get the report for this context
                         report_map_.erase(cx->uid);
-                        verbose() << indent_() << "  (Ended subreport \"" << r->getName() << "\")"
+                        verbose() << __FUNCTION__ << indent_() << "  (Ended subreport \"" << r->getName() << "\")"
                                   << std::endl;
                     }
 
@@ -837,13 +886,13 @@ class ReportFileParserYAML
                         const TreeNode* n = cx->first;
                         const std::vector<std::string>& captures = cx->second;
                         Report* const r = report_map_.at(cx->uid); // Get the report for this context
-                        verbose() << indent_() << "Autopopulating " << cx << " for "
+                        verbose() << __FUNCTION__ << indent_() << "Autopopulating " << cx << " for "
                                   << n->getLocation() << " report = " << r->getName() << std::endl;
                         r->autoPopulate(n, attr_filter, captures, max_recursion_depth, max_report_depth);
                     }
 
                     current_autopop_block_.clear();
-                    verbose() << indent_() << "Exiting construction of an autopopulation block"
+                    verbose() << __FUNCTION__ << indent_() << "Exiting construction of an autopopulation block"
                               << std::endl;
                     return false;
                 }
@@ -863,10 +912,10 @@ class ReportFileParserYAML
                     sparta_assert(report_stack_.size() > 0);
                     for(auto& cx : context){
                         Report* const r = report_map_.at(cx->uid); // Get the report for this context
-                        verbose() << indent_() << "Setting Styles at context for report \""
+                        verbose() << __FUNCTION__ << indent_() << "Setting Styles at context for report \""
                                   << r->getName() << "\"" << std::endl;
                         for(auto const & kv : *style_block_){
-                            verbose() << indent_() << "  style=" << kv.first << " value="
+                            verbose() << __FUNCTION__ << indent_() << "  style=" << kv.first << " value="
                                       << kv.second << std::endl;
                             r->setStyle(kv.first, kv.second);
                         }
@@ -878,11 +927,22 @@ class ReportFileParserYAML
                     return false;
                 }else if(key == KEY_CONTENT){
                     return false;
+                }else if(key == KEY_METADATA){
+                    verbose() << __FUNCTION__ << indent_() << "Metadata block end" << std::endl;
+                    if(metadata_block_ != nullptr) {
+                        for(auto& cx : context){
+                            Report* const r = report_map_.at(cx->uid);
+                            for(auto const & kv : *metadata_block_){
+                                r->addMetaData(kv.first, kv.second);
+                            }
+                        }
+                    }
+                    metadata_block_.reset();
                 }else if(key == KEY_TRIGGER){
                     if(trigger_defn_ != nullptr){
                         for(auto& cx : context){
                             Report* const r = report_map_.at(cx->uid);
-                            verbose() << indent_() << "Setting trigger(s) at context for report \""
+                            verbose() << __FUNCTION__ << indent_() << "Setting trigger(s) at context for report \""
                                       << r->getName() << "\"" << std::endl;
                             r->handleParsedTrigger(*trigger_defn_, cx->first);
                         }
@@ -911,18 +971,18 @@ class ReportFileParserYAML
             auto itr = next_uid_map_.find({parent->uid, parent->first});
             if(itr == next_uid_map_.end()){
                 // Inherit form parent, no entry in the map
-                verbose() << indent_() << "(getNextNodeID_) parent entry: " << *parent
+                verbose() << __FUNCTION__ << indent_() << "(getNextNodeID_) parent entry: " << *parent
                           << " not found. in map. Inheriting parent uid " << parent->uid << std::endl;
-                verbose() << indent_() << "(getNextNodeID_) next uid map (" << next_uid_map_.size()
+                verbose() << __FUNCTION__ << indent_() << "(getNextNodeID_) next uid map (" << next_uid_map_.size()
                           << " entries):" << std::endl;
                 for(auto& e : next_uid_map_){
-                    verbose() << indent_() << "  " << e.first << " " << e.second << std::endl;
+                    verbose() << __FUNCTION__ << indent_() << "  " << e.first << " " << e.second << std::endl;
                 }
                 return parent->uid;
             }
 
             // There is an entry, use the UID that it directs us to
-            verbose() << indent_() << "(getNextNodeID_) CHILD UID FOUND: " << itr->first << " -> "
+            verbose() << __FUNCTION__ << indent_() << "(getNextNodeID_) CHILD UID FOUND: " << itr->first << " -> "
                       << itr->second << std::endl;
             return itr->second;
         }
@@ -1170,6 +1230,7 @@ constexpr char ReportFileParserYAML::ReportFileEventHandlerYAML::KEY_AUTOPOPULAT
 constexpr char ReportFileParserYAML::ReportFileEventHandlerYAML::KEY_AUTOPOPULATE_MAX_RECURSION_DEPTH[];
 constexpr char ReportFileParserYAML::ReportFileEventHandlerYAML::KEY_AUTOPOPULATE_MAX_REPORT_DEPTH[];
 constexpr char ReportFileParserYAML::ReportFileEventHandlerYAML::KEY_STYLE[];
+constexpr char ReportFileParserYAML::ReportFileEventHandlerYAML::KEY_METADATA[];
 constexpr char ReportFileParserYAML::ReportFileEventHandlerYAML::KEY_TRIGGER[];
 constexpr char ReportFileParserYAML::ReportFileEventHandlerYAML::KEY_REPORT_IGNORE[];
 constexpr char ReportFileParserYAML::ReportFileEventHandlerYAML::KEY_REPORT_OPTIONAL[];

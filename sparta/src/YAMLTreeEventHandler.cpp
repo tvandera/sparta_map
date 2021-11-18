@@ -23,10 +23,10 @@ namespace sparta
         (void) tag;
 
         if(subtree_.size() > 0){
-            verbose() << indent_() << "(ctxt size=" << subtree_.size() << ") + Scalar " << value << " @line "
+            verbose() << __FUNCTION__ << indent_() << "(ctxt size=" << subtree_.size() << ") + Scalar " << value << " @line "
                       << mark.line << std::endl;
         }else{
-            verbose() << indent_() << "(commented)" << " + Scalar " << value << " @line " << mark.line
+            verbose() << __FUNCTION__ << indent_() << "(commented)" << " + Scalar " << value << " @line " << mark.line
                       << std::endl;
         }
 
@@ -45,17 +45,17 @@ namespace sparta
 
         if(last_val_ != ""){
             // Compact map
-            verbose() << indent_() << "COMPACT MAPPING {" << last_val_ << " : " << value << "}"
+            verbose() << __FUNCTION__ << indent_() << "COMPACT MAPPING {" << last_val_ << " : " << value << "}"
                       << std::endl;
 
             static const std::vector<std::string> include_keys(INCLUDE_KEYS);
             if(std::find(include_keys.begin(), include_keys.end(), last_val_) != include_keys.end()){
-                verbose() << indent_() << "  handling include directive" << std::endl;
+                verbose() << __FUNCTION__ << indent_() << "  handling include directive" << std::endl;
                 handleIncludeDirective_(value, subtree_);
             }else if(last_val_.find(COMMENT_KEY_START) == 0){
-                verbose() << indent_() << "  commented compact mapping. doing nothing" << std::endl;
+                verbose() << __FUNCTION__ << indent_() << "  commented compact mapping. doing nothing" << std::endl;
             }else if(!traverseSequence_()) {
-                verbose() << indent_() << "  told to ignore the sequence/scalar" << std::endl;
+                verbose() << __FUNCTION__ << indent_() << "  told to ignore the sequence/scalar" << std::endl;
             }else{
                 // Key (last_val_) is the relative location pattern of a
                 // TreeNode or a reserved key.
@@ -65,7 +65,7 @@ namespace sparta
 
                 if(isReservedKey_(last_val_)){
 
-                    verbose() << indent_() << "Handling leaf scalar " << last_val_ << " for " << subtree_ << std::endl;
+                    verbose() << __FUNCTION__ << indent_() << "Handling leaf scalar " << last_val_ << " for " << subtree_ << std::endl;
 
                     // One call to this method with full context available able
                     handleLeafScalarContexts_(value, last_val_, subtree_);
@@ -158,10 +158,10 @@ namespace sparta
         (void) style;
 
         if(subtree_.size() > 0){
-            verbose() << indent_() << "(" << subtree_.size() << ") + SeqStart (" << last_val_
+            verbose() << __FUNCTION__ << indent_() << "(" << subtree_.size() << ") + SeqStart (" << last_val_
                       << ") @" << mark.line << std::endl;
         }else{
-            verbose() << indent_() << "(commented)" << " + SeqStart (" << last_val_ << ") @"
+            verbose() << __FUNCTION__ << indent_() << "(commented)" << " + SeqStart (" << last_val_ << ") @"
                       << mark.line << std::endl;
         }
 
@@ -212,14 +212,14 @@ namespace sparta
     //! Handle SequenceEnd YAML node from parser
     void YAMLTreeEventHandler::OnSequenceEnd()
     {
-        verbose() << indent_() << "Storing sequence to leaf node: "
+        verbose() << __FUNCTION__ << indent_() << "Storing sequence to leaf node: "
                   << sparta::utils::stringize_value(seq_vec_) << std::endl;
 
         if(subtree_.size() > 0){
-            ///verbose() << indent_() << subtree_->getLocation() << " + SeqEnd" << std::endl;
-            verbose() << indent_() << "(" << subtree_.size() << ") + SeqEnd" << std::endl;
+            ///verbose() << __FUNCTION__ << indent_() << subtree_->getLocation() << " + SeqEnd" << std::endl;
+            verbose() << __FUNCTION__ << indent_() << "(" << subtree_.size() << ") + SeqEnd" << std::endl;
         }else{
-            verbose() << indent_() << "(commented)" << " + SeqEnd" << std::endl;
+            verbose() << __FUNCTION__ << indent_() << "(commented)" << " + SeqEnd" << std::endl;
         }
         nesting_--;
 
@@ -255,10 +255,10 @@ namespace sparta
         (void) style;
 
         if(subtree_.size() > 0){
-            verbose() << indent_() << "(" << subtree_.size() << ") + MapStart (" << last_val_
+            verbose() << __FUNCTION__ << indent_() << "(" << subtree_.size() << ") + MapStart (" << last_val_
                       << ") @" << mark.line << std::endl;
         }else{
-            verbose() << indent_() << "(commented)" << " + MapStart (" << last_val_ << ") @"
+            verbose() << __FUNCTION__ << indent_() << "(commented)" << " + MapStart (" << last_val_ << ") @"
                       << mark.line << std::endl;
         }
 
@@ -279,7 +279,7 @@ namespace sparta
         // If this map is a keyword, do something different
         if(!handleEnterMap_(last_val_, subtree_)){
             // Handle this reserved key instead of traversing the device tree
-            verbose() << indent_() << "entered specially-handled mapping on \"" << last_val_
+            verbose() << __FUNCTION__ << indent_() << "entered specially-handled mapping on \"" << last_val_
                       << "\"" << std::endl;
 
             // Carry same subtree_ on to next level updating each node to get new user-IDs
@@ -300,7 +300,7 @@ namespace sparta
 
             static const std::vector<std::string> include_keys(INCLUDE_KEYS);
             if(std::find(include_keys.begin(), include_keys.end(), last_val_) != include_keys.end()){
-                verbose() << indent_() << "  INCLUDE MAPPING" << std::endl;
+                verbose() << __FUNCTION__ << indent_() << "  INCLUDE MAPPING" << std::endl;
                 SpartaException ex("Include directive contains a map. This is not allowed. ");
                 ex << "Includes must map directly to a filename scalar. ";
                 addMarkInfo_(ex, mark);
@@ -308,7 +308,7 @@ namespace sparta
 
             }else if(last_val_.find(COMMENT_KEY_START) == 0){
                 // comment
-                verbose() << indent_() << "  COMMENTED MAPPING" << std::endl;
+                verbose() << __FUNCTION__ << indent_() << "  COMMENTED MAPPING" << std::endl;
             }else{
                 NavVector& v = tree_stack_.top();
                 // Assures found num nodes in range [1, MAX_MATCHES_PER_LEVEL].
@@ -323,9 +323,9 @@ namespace sparta
     void YAMLTreeEventHandler::OnMapEnd()
     {
         if(subtree_.size() > 0){
-            verbose() << indent_() << "(" << subtree_.size() << ") + MapEnd" << std::endl;
+            verbose() << __FUNCTION__ << indent_() << "(" << subtree_.size() << ") + MapEnd" << std::endl;
         }else{
-            verbose() << indent_() << "(commented)" << " + MapEnd" << std::endl;
+            verbose() << __FUNCTION__ << indent_() << "(commented)" << " + MapEnd" << std::endl;
         }
 
         // Exiting a map typically involves popping the tree stack and
@@ -341,7 +341,7 @@ namespace sparta
 
         if(!handleExitMap_(map_entry_key, subtree_)){
             // Handle returning from a reserved keyword recursion
-            verbose() << indent_() << "exiting special mapping on \"" << map_entry_key
+            verbose() << __FUNCTION__ << indent_() << "exiting special mapping on \"" << map_entry_key
                       << "\"" << std::endl;
             subtree_ = tree_stack_.top(); // Anything lost in subtree_ is cleaned by shared_ptr
             tree_stack_.pop();
