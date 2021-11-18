@@ -584,12 +584,6 @@ CommandLineSimulator::CommandLineSimulator(const std::string& usage,
          named_value<std::vector<std::string>>("DIR_NAME", 1, 1),
          "When SimDB report verification is enabled, this option will send all verification "
          "artifacts to the specified directory, relative to the current working directory.")
-        ("report-warmup-icount",
-         named_value<uint64_t>(""),
-         "DEPRECATED")
-        ("report-warmup-counter",
-         named_value<std::vector<std::string>>("", 2, 2)->multitoken(),
-         "DEPRECATED")
         ("report-update-ns",
          named_value<uint64_t>(""),
          "DEPRECATED")
@@ -746,7 +740,6 @@ bool CommandLineSimulator::parse(int argc,
         bool delayed_start = false;
         uint32_t dash_p_config_applicators_used = 0;
 
-        bool throw_report_deprecated = false;
         for(size_t i = 0; i < opts.options.size(); /*increment conditionally*/){
             // Option: parameter -1 [top.cpu0.params.foo, 100] [-p, top.cpu0.params.foo, 100] 0 0
             auto o = opts.options[i];
@@ -1110,25 +1103,6 @@ bool CommandLineSimulator::parse(int argc,
             }else if (o.string_key == "report-verif-output-dir") {
                 db::ReportVerifier::writeVerifResultsTo(o.value[0]);
                 opts.options.erase(opts.options.begin() + i);
-            }else if (o.string_key == "report-warmup-icount") {
-                throw_report_deprecated = true;
-                ++i;
-            }else if (o.string_key == "report-warmup-counter") {
-                throw_report_deprecated = true;
-                ++i;
-            }else if (o.string_key == "report-update-ns") {
-                throw_report_deprecated = true;
-                ++i;
-            }else if (o.string_key == "report-update-cycles") {
-                throw_report_deprecated = true;
-                ++i;
-            }else if (o.string_key == "report-update-counter") {
-                throw_report_deprecated = true;
-                ++i;
-            }else if (o.string_key == "report-update-icount") {
-                throw_report_deprecated = true;
-                ++i;
-
             }else if (o.string_key == "pipeline-collection") {
                 //Enforce that we cannot set pipeline-collection options twice.
                 if(collection_parsed)
@@ -1448,27 +1422,6 @@ bool CommandLineSimulator::parse(int argc,
             else{
                 ++i;
             }
-        }
-
-        if (throw_report_deprecated) {
-            std::ostringstream oss;
-
-            oss << std::endl;
-            oss << "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *" << std::endl;
-            oss << "The following command-line options have been deprecated: " << std::endl;
-            oss << "\t--report-warmup-icount"   << std::endl;
-            oss << "\t--report-warmup-counter"  << std::endl;
-            oss << "\t--report-update-ns"       << std::endl;
-            oss << "\t--report-update-cycles"   << std::endl;
-            oss << "\t--report-update-counter"  << std::endl;
-            oss << "\t--report-update-icount"   << std::endl << std::endl;
-            oss << "Please refer to the files 'ReportTriggers.txt' and 'SubreportTriggers.txt'" << std::endl;
-            oss << "found in this directory for more information on how to specify these options" << std::endl;
-            oss << "from YAML files directly." << std::endl;
-            oss << "* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *";
-            oss << std::endl;
-
-            throw SpartaException(oss.str());
         }
 
         // The only config applicators that can be used along with read-final-config is -p options.
