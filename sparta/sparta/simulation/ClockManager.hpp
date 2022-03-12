@@ -171,5 +171,3 @@ class RootTreeNode;
 
     std::ostream &operator<<(std::ostream &os, const ClockManager &m);
 };
-
-#pragma once
