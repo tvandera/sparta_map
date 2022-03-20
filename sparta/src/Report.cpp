@@ -447,7 +447,7 @@ class ReportFileParserYAML
                             }
                             else{
                                 Report* const r = report_map_.at(scope.uid);
-                                statistics::expression::Expression expr(assoc_key, n);
+                                statistics::expression::Expression expr(assoc_key, n, r->getStatistics());
                                 StatisticInstance si(std::move(expr));
                                 si.setContext(n);
                                 std::string full_name = value;
@@ -459,7 +459,7 @@ class ReportFileParserYAML
                         }
                         else{
                             Report* const r = report_map_.at(scope.uid);
-                            statistics::expression::Expression expr(assoc_key, n);
+                            statistics::expression::Expression expr(assoc_key, n, r->getStatistics());
                             StatisticInstance si(std::move(expr));
                             si.setContext(n);
                             std::string full_name = value;
