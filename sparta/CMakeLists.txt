@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.14)
+cmake_minimum_required (VERSION 3.15)
 
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -122,6 +122,10 @@ if (CMAKE_BUILD_TYPE STREQUAL "Debug")
   message (STATUS "Building Sparta in Debug mode")
 elseif (CMAKE_BUILD_TYPE STREQUAL "Release")
   message (STATUS "Building Sparta in Release mode")
+elseif (CMAKE_BUILD_TYPE STREQUAL "RelWithDebInfo")
+  message (STATUS "Building Sparta in Release With Debug Info mode")
+elseif (CMAKE_BUILD_TYPE STREQUAL "MinSizeRel")
+  message (STATUS "Building Sparta in Release Minimal Size mode")
 else ()
   message (FATAL_ERROR "Unknown CMAKE_BUILD_TYPE.  See README.md OR type 'make' at the SPARTA root")
 endif ()
@@ -137,16 +141,19 @@ if (CCACHE_PROGRAM)
 endif ()
 
 # -Wpedantic
-add_definitions(-DSPARTA_VERSION=\"${GIT_REPO_VERSION}\")
+add_definitions(-DSPARTA_VERSION=\"${GIT_REPO_VERSION}\" -DRAPIDJSON_NOMEMBERITERATORCLASS)
 add_compile_options(-Werror -fPIC
   -Wall -Wextra -Winline -Winit-self -Wno-unused-function
   -Wuninitialized -Wno-sequence-point -Wno-inline -Wno-unknown-pragmas
-  -Woverloaded-virtual -Wno-unused-parameter -Wno-missing-field-initializers)
+  -Woverloaded-virtual -Wno-unused-parameter -Wno-missing-field-initializers
+  -Wno-deprecated)
 
 if (GEN_DEBUG_INFO)
   message (STATUS "Building with debug info -g")
-  add_compile_options ( -g )
-  add_link_options( -g )
+  if (CMAKE_BUILD_TYPE STREQUAL "Release" OR CMAKE_BUILD_TYPE STREQUAL "MinSizeRel")
+      add_compile_options ( -g )
+      add_link_options( -g )
+  endif ()
 else ()
   message (STATUS "Building without debug info -g")
 endif ()
