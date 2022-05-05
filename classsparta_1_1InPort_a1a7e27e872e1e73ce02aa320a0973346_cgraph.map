@@ -1,0 +1,5 @@
+<map id="sparta::InPort::registerConsumerEvent" name="sparta::InPort::registerConsumerEvent">
+<area shape="rect" id="node1" title="Add an event &quot;listener&quot; to this port." alt="" coords="5,23,153,65"/>
+<area shape="rect" id="node2" href="$classsparta_1_1Port.html#afb0fd7ccb38114dd5aaaf4dc69f03e39" title="The direction of the port." alt="" coords="210,5,373,32"/>
+<area shape="rect" id="node3" href="$classsparta_1_1TreeNode.html#abfa3602a9ab827b1351ef8f518c32576" title="Gets the name of this node." alt="" coords="201,56,381,83"/>
+</map>

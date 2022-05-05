@@ -1,0 +1,4 @@
+<map id="sparta::statistics::expression::Expression::operator*=" name="sparta::statistics::expression::Expression::operator*=">
+<area shape="rect" id="node1" title="Return this expression with a node multiplying by rhp." alt="" coords="5,5,164,61"/>
+<area shape="rect" id="node2" href="$classsparta_1_1statistics_1_1expression_1_1Expression.html#a415445c23de7bf89472079db8542eeda" title="Makes a clone of the content of this expression." alt="" coords="212,5,371,61"/>
+</map>

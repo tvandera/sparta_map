@@ -1,0 +1,6 @@
+<map id="sparta::serialization::checkpoint::FastCheckpointer::traceValue" name="sparta::serialization::checkpoint::FastCheckpointer::traceValue">
+<area shape="rect" id="node1" title="Forwards debug/trace info onto checkpoint by ID." alt="" coords="5,85,204,141"/>
+<area shape="rect" id="node2" href="$classsparta_1_1serialization_1_1checkpoint_1_1FastCheckpointer.html#ac148071f4baed77d65246f9a9fb6da12" title="Attempts to find a checkpoint within this checkpointer by ID." alt="" coords="252,5,451,61"/>
+<area shape="rect" id="node3" href="$classsparta_1_1serialization_1_1checkpoint_1_1Checkpointer.html#a21e139d37ad60c48a22ffb58359f83fb" title="Returns ArchDatas enumerated by this Checkpointer for iteration when saving or loading checkpoint dat..." alt="" coords="265,85,438,141"/>
+<area shape="rect" id="node4" href="$classsparta_1_1serialization_1_1checkpoint_1_1DeltaCheckpoint.html#a88cd24eb4a0d9498e295f5c4eda63e48" title="Implement trace of a value across the restore chain as described in Checkpointer::traceValue." alt="" coords="255,165,447,221"/>
+</map>

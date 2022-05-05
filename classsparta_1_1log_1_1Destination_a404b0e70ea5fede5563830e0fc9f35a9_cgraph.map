@@ -1,0 +1,4 @@
+<map id="sparta::log::Destination::compare" name="sparta::log::Destination::compare">
+<area shape="rect" id="node1" title="Comparison of destination for std::string." alt="" coords="5,5,157,47"/>
+<area shape="rect" id="node2" href="$classsparta_1_1log_1_1Destination.html#a806f04ca3de73d90c30c31665a6acd72" title="Returns true if the destination behind this interface was constructed with the string s." alt="" coords="205,5,357,47"/>
+</map>

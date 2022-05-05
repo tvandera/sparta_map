@@ -1,0 +1,8 @@
+<map id="sparta::memory::DMIBlockingMemoryIF::tryWrite" name="sparta::memory::DMIBlockingMemoryIF::tryWrite">
+<area shape="rect" id="node1" title="Override of sparta::BlockingMemoryIF::tryWrite." alt="" coords="5,39,196,80"/>
+<area shape="rect" id="node2" href="$classsparta_1_1memory_1_1DMIBlockingMemoryIF.html#ad2f22b56513195bde837c1ee9b1a333c" title=" " alt="" coords="244,5,435,47"/>
+<area shape="rect" id="node3" href="$classsparta_1_1memory_1_1BlockingMemoryIF.html#ae85336d877e0227b567f05f901c0e782" title="Attempt to write memory of size size at address addr." alt="" coords="256,71,423,112"/>
+<area shape="rect" id="node4" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#a4efd1a8b860fd5224a78b4f17f06853d" title="Determines if the given address spans block boundaries defined for this interface...." alt="" coords="483,5,681,47"/>
+<area shape="rect" id="node5" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#a56bff166f0c2e250be9450a8a152becc" title="Determines if the range [addr, addr+size) is within the access windows for this interface." alt="" coords="483,71,681,112"/>
+<area shape="rect" id="node6" href="$classsparta_1_1memory_1_1BlockingMemoryIF.html#a73f4639204dbf2a145e07ab7d575d108" title="Implements tryWrite." alt="" coords="499,136,665,177"/>
+</map>

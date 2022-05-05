@@ -1,0 +1,7 @@
+<map id="sparta::ResourceTreeNode::~ResourceTreeNode" name="sparta::ResourceTreeNode::~ResourceTreeNode">
+<area shape="rect" id="node1" title="Virtual Destructor." alt="" coords="5,104,181,145"/>
+<area shape="rect" id="node2" href="$classsparta_1_1ResourceFactoryBase.html#a324976d28e4136a75931e1ad83367d0d" title="Deletes a ParameterSet created by the createParameters method of this ResourceFactory." alt="" coords="229,5,421,47"/>
+<area shape="rect" id="node3" href="$classsparta_1_1ResourceFactoryBase.html#a15b4c6d934c5a3409105ba80220f8aa1" title="Deletes a resource created by the createResource method of this ResourceFactory." alt="" coords="229,71,421,112"/>
+<area shape="rect" id="node4" href="$classsparta_1_1ResourceFactoryBase.html#a027053d25a90f3c51c2b7925e6560791" title="Optionally deletes the TreeNodes created by createSubtee (if any)." alt="" coords="229,136,421,177"/>
+<area shape="rect" id="node5" href="$classsparta_1_1ResourceContainer.html#a854becbfda6c01a57fb00d02372b54b7" title="Returns the currently held resource of this node (if any). This method can be called at any time." alt="" coords="238,201,413,243"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="core_example::CPUFactory::setTopology" name="core_example::CPUFactory::setTopology">
+<area shape="rect" id="node1" title="Set the user&#45;defined topology for this microarchitecture." alt="" coords="5,5,184,47"/>
+<area shape="rect" id="node2" href="$classcore__example_1_1CPUTopology.html#afdc2013c2f657f010fd87ed1d2665b3c" title="Static method to allocate memory for topology." alt="" coords="232,5,420,47"/>
+</map>

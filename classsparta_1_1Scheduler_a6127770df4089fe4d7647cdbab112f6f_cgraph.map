@@ -1,0 +1,4 @@
+<map id="sparta::Scheduler::kickTheDog" name="sparta::Scheduler::kickTheDog">
+<area shape="rect" id="node1" title="Reset the watchdog timer." alt="" coords="5,5,133,47"/>
+<area shape="rect" id="node2" href="$classsparta_1_1Scheduler.html#a34dcaf99252d9e9e0511d69d2aa84ff8" title="The current tick the Scheduler is working on or just finished." alt="" coords="181,5,309,47"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="sparta::StatisticInstance::getVisibility" name="sparta::StatisticInstance::getVisibility">
+<area shape="rect" id="node1" title="Gets the visibility associated with this statistic instance." alt="" coords="5,71,168,112"/>
+<area shape="rect" id="node2" href="$classsparta_1_1utils_1_1ValidValue.html#aca75dab39668be5fb02f4e2bb8d5019c" title="Get the value &#45; const version." alt="" coords="231,5,387,47"/>
+<area shape="rect" id="node3" href="$classsparta_1_1InstrumentationNode.html#a4be3cb0085f64ae39e87921ee842a98c" title="Gets the visibility hint of this node. This is invariant after construction." alt="" coords="216,71,401,112"/>
+<area shape="rect" id="node4" href="$classsparta_1_1utils_1_1ValidValue.html#ae3676d510018298bdc57028aca4efaff" title="Is this value valid." alt="" coords="231,136,387,177"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="sparta::DataContainer::clearData" name="sparta::DataContainer::clearData">
+<area shape="rect" id="node1" title="Clear the validity of the data at the port." alt="" coords="5,5,152,47"/>
+<area shape="rect" id="node2" href="$classsparta_1_1utils_1_1ValidValue.html#abf0c0609d9131575a50a9b64d864e768" title="Clear the validity of this object." alt="" coords="200,5,356,47"/>
+</map>

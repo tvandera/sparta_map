@@ -1,0 +1,8 @@
+<map id="sparta::collection::Collectable&lt; DataT, collection_phase, MetaStruct::enable_if_t&lt; std::is_base_of&lt; sparta::PairDefinition&lt; MetaStruct::remove_any_pointer_t&lt; DataT &gt; &gt;, typename MetaStruct::remove_any_pointer_t&lt; DataT &gt;::SpartaPairDefinitionType &gt;::value &gt; &gt;::collectWithDuration" name="sparta::collection::Collectable&lt; DataT, collection_phase, MetaStruct::enable_if_t&lt; std::is_base_of&lt; sparta::PairDefinition&lt; MetaStruct::remove_any_pointer_t&lt; DataT &gt; &gt;, typename MetaStruct::remove_any_pointer_t&lt; DataT &gt;::SpartaPairDefinitionType &gt;::value &gt; &gt;::collectWithDuration">
+<area shape="rect" id="node1" title="Explicitly collect a value for the given duration." alt="" coords="5,66,337,210"/>
+<area shape="rect" id="node2" href="$classsparta_1_1collection_1_1Collectable.html#a56d9cf5ee0cc7e0897413afc6b73c541" title=" " alt="" coords="411,29,547,71"/>
+<area shape="rect" id="node4" href="$classsparta_1_1collection_1_1CollectableTreeNode.html#ab1534ea1db6db3c3587f8da0cfef1aa1" title="Determine whether or not this node has collection turned on or off." alt="" coords="839,51,988,107"/>
+<area shape="rect" id="node5" href="$classsparta_1_1PhasedPayloadEvent.html#a3f7835dce02b716a08b1c88e23733955" title="Prepare a Scheduleable Payload for scheduling either now or later." alt="" coords="385,147,572,188"/>
+<area shape="rect" id="node6" href="$classsparta_1_1Scheduleable.html#a3bb381d1ef9ccb3c335613c5600d162b" title="Schedule this event with its pre&#45;set delay using the pre&#45;set Clock." alt="" coords="407,236,550,277"/>
+<area shape="rect" id="node3" href="$classsparta_1_1collection_1_1Collectable.html#a6506b3af9a7da969befd4d11536881dc" title=" " alt="" coords="620,29,791,71"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="sparta::TieredMap::getEstimatedMemory" name="sparta::TieredMap::getEstimatedMemory">
+<area shape="rect" id="node1" title="Returns the estimated memory use by this map in bytes." alt="" coords="5,5,149,47"/>
+<area shape="rect" id="node2" href="$classsparta_1_1TieredMap.html#a1fd1f8f86aa13dbf23907cc6706c88c4" title="Constructor." alt="" coords="197,5,328,47"/>
+<area shape="rect" id="node3" href="$namespacesparta.html#aed83fab41761c39068128f061bd02007" title="Determines if input is 0 or a power of 2." alt="" coords="376,13,508,39"/>
+</map>

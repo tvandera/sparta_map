@@ -1,0 +1,4 @@
+<map id="sparta::Pipeline::PipelineIterator::operator*" name="sparta::Pipeline::PipelineIterator::operator*">
+<area shape="rect" id="node1" title="Override the dereferencing operator*." alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node2" href="$classsparta_1_1Pipeline_1_1PipelineIterator.html#af6145d6fd25bfe23103043f008164155" title="Check the validity of the iterator." alt="" coords="216,5,379,47"/>
+</map>

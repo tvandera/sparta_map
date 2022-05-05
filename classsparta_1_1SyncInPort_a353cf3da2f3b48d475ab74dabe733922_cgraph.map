@@ -1,0 +1,5 @@
+<map id="sparta::SyncInPort::setInitialReadyState" name="sparta::SyncInPort::setInitialReadyState">
+<area shape="rect" id="node1" title="Set the ready state for the port before simulation begins." alt="" coords="5,39,149,80"/>
+<area shape="rect" id="node2" href="$classsparta_1_1Scheduler.html#a34dcaf99252d9e9e0511d69d2aa84ff8" title="The current tick the Scheduler is working on or just finished." alt="" coords="197,5,325,47"/>
+<area shape="rect" id="node3" href="$classsparta_1_1Scheduler.html#a4f78a423a6092f3b22cb16d1a352ad6d" title="Query if the scheduler is running." alt="" coords="197,71,325,112"/>
+</map>

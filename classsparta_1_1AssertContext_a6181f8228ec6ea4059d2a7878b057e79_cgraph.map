@@ -1,0 +1,8 @@
+<map id="sparta::AssertContext::getContextDescription" name="sparta::AssertContext::getContextDescription">
+<area shape="rect" id="node1" title="Handle case where pointer is a subclass of (or is a) sparta::TreeNode." alt="" coords="5,89,160,131"/>
+<area shape="rect" id="node2" href="$classsparta_1_1TreeNode.html#a912f3da8fc94847159ebe53c39b58344" title="Walks up parents (starting with self) until a parent with an associated local clock is found,..." alt="" coords="216,71,395,98"/>
+<area shape="rect" id="node6" href="$classsparta_1_1TreeNode.html#a1a6d4aac10bfa5345b587d84170441de" title=" " alt="" coords="208,122,403,149"/>
+<area shape="rect" id="node3" href="$classsparta_1_1TreeNode.html#a1d3f11ca5cb5b2ec275b1a7e405d693c" title="Gets the clock associated directly with this Node. This is useful for configuration and simulator deb..." alt="" coords="453,5,631,47"/>
+<area shape="rect" id="node4" href="$classsparta_1_1TreeNode.html#a84997eff2ff8ca93baab07f458d04eb9" title="Gets immediate parent of this node if one exists." alt="" coords="451,71,633,98"/>
+<area shape="rect" id="node5" href="$classsparta_1_1PhasedObject.html#ac8edefaf47c41a0be179827e657955d5" title="Is this node (and thus the entire tree above it) &quot;finalized&quot;." alt="" coords="469,123,615,164"/>
+</map>

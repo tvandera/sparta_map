@@ -1,0 +1,5 @@
+<map id="sparta::serialization::checkpoint::FastCheckpointer::stringize" name="sparta::serialization::checkpoint::FastCheckpointer::stringize">
+<area shape="rect" id="node1" title="Returns a string describing this object." alt="" coords="5,24,204,80"/>
+<area shape="rect" id="node2" href="$classsparta_1_1TreeNode.html#a1a6d4aac10bfa5345b587d84170441de" title=" " alt="" coords="252,5,447,32"/>
+<area shape="rect" id="node3" href="$classsparta_1_1serialization_1_1checkpoint_1_1Checkpointer.html#a6335c198c9d25b483f652b4c1a9da560" title="Returns the root associated with this checkpointer." alt="" coords="263,56,436,112"/>
+</map>

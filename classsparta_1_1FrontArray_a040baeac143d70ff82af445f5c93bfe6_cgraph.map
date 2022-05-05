@@ -1,0 +1,7 @@
+<map id="sparta::FrontArray::readValid" name="sparta::FrontArray::readValid">
+<area shape="rect" id="node1" title="read the nth valid object from the front of the array." alt="" coords="5,74,129,115"/>
+<area shape="rect" id="node2" href="$classsparta_1_1Array.html#a04bb4a1d42dec14d026afe15c65eef35" title="Return the maximum number of elements this Array can hold." alt="" coords="181,5,329,32"/>
+<area shape="rect" id="node3" href="$classsparta_1_1Array.html#a6b47047a46bca0f7375c680465fd2192" title="Determine whether an index is currently valid." alt="" coords="380,107,519,133"/>
+<area shape="rect" id="node4" href="$classsparta_1_1Array.html#ad58ce73335e9712a099f78571664fb22" title="The number of valid entries contained." alt="" coords="177,107,332,133"/>
+<area shape="rect" id="node5" href="$classsparta_1_1Array.html#a75d854e215f22fbe70407ab87a5bc11c" title="Read (only) the data at an index." alt="" coords="192,157,317,184"/>
+</map>

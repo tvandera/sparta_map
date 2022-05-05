@@ -1,0 +1,5 @@
+<map id="sparta::CycleCounter::operator==" name="sparta::CycleCounter::operator==">
+<area shape="rect" id="node1" title="Comparison against another counter." alt="" coords="5,5,147,47"/>
+<area shape="rect" id="node2" href="$classsparta_1_1CycleCounter.html#a88fd7c307e15277ef72eef42aa3446d6" title="Gets the value of this counter." alt="" coords="195,13,360,39"/>
+<area shape="rect" id="node3" href="$classsparta_1_1Clock.html#a3671607fc743bf3a36be1ce37fcb27b5" title="Return the total elapsed cycles from this Clocks POV." alt="" coords="408,13,595,39"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="sparta::ClockManager::makeClock" name="sparta::ClockManager::makeClock">
+<area shape="rect" id="node1" title="Create a new clock with a 1:1 ratio to a parent clock." alt="" coords="5,5,152,47"/>
+<area shape="rect" id="node2" href="$classsparta_1_1ClockManager.html#aee425829935a2f92efa250f07cc6451b" title="Create a new clock with a given ratio to a parent clock." alt="" coords="200,5,347,47"/>
+</map>

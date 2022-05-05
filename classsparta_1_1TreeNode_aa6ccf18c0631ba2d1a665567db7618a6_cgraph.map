@@ -1,0 +1,4 @@
+<map id="sparta::TreeNode::locateNotificationSources" name="sparta::TreeNode::locateNotificationSources">
+<area shape="rect" id="node1" title="Gets all possible notification info from NotificationSources within this node&#39;s subtree." alt="" coords="5,5,168,47"/>
+<area shape="rect" id="node2" href="$classsparta_1_1StringManager.html#a00c28199fcaa46cf51ac5ec32a51aade" title="Returns the StringManager singleton." alt="" coords="216,5,364,47"/>
+</map>

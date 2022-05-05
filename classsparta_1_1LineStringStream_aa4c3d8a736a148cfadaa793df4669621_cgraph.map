@@ -1,0 +1,4 @@
+<map id="sparta::LineStringStream::operator&lt;&lt;" name="sparta::LineStringStream::operator&lt;&lt;">
+<area shape="rect" id="node1" title="Handler for stream modifiers (e.g. endl)" alt="" coords="5,5,171,47"/>
+<area shape="rect" id="node2" href="$classsparta_1_1LineStringStream.html#a34a958d814eea6ff69e360ded1874dc9" title="Add a new line to the list. This is also called when std::endl is inserted into this stream." alt="" coords="219,5,384,47"/>
+</map>

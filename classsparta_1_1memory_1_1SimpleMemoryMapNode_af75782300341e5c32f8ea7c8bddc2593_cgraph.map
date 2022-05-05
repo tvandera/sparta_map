@@ -1,0 +1,12 @@
+<map id="sparta::memory::SimpleMemoryMapNode::read" name="sparta::memory::SimpleMemoryMapNode::read">
+<area shape="rect" id="node1" title="Read a block of memory." alt="" coords="5,201,208,243"/>
+<area shape="rect" id="node2" href="$classsparta_1_1memory_1_1BlockingMemoryIFNode.html#a7249fca2609ee2a456a2752890574085" title="Attempt to read memory of size size at address addr." alt="" coords="274,103,441,144"/>
+<area shape="rect" id="node8" href="$classsparta_1_1memory_1_1SimpleMemoryMap.html#a03897cc554d3c815b6dfea485c1d67c1" title="Determines if a mapping is valid or not." alt="" coords="256,168,459,209"/>
+<area shape="rect" id="node9" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#ae35fa48697f197f9357be0d6c5fae0c6" title="Verifies that the range [addr, addr+size) is within the access windows for this interface." alt="" coords="258,233,457,275"/>
+<area shape="rect" id="node10" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#acb92bd2905d208cab60935b46dcd67a9" title="Verifies that the given address does not span block boundaries defined for this interface." alt="" coords="258,299,457,340"/>
+<area shape="rect" id="node3" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#a4efd1a8b860fd5224a78b4f17f06853d" title="Determines if the given address spans block boundaries defined for this interface...." alt="" coords="507,283,705,324"/>
+<area shape="rect" id="node4" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#a56bff166f0c2e250be9450a8a152becc" title="Determines if the range [addr, addr+size) is within the access windows for this interface." alt="" coords="507,5,705,47"/>
+<area shape="rect" id="node5" href="$classsparta_1_1NotificationSourceBase.html#a8bd1a11753aa860f953f65f25cf22198" title="Is this NotificationSourceBase being observed at this node or an ancestor of any distance." alt="" coords="521,71,691,112"/>
+<area shape="rect" id="node6" href="$classsparta_1_1NotificationSource.html#a7853e8c00ab8e89b96fba9285cf7128e" title="Post with reference to data with parent as message origin." alt="" coords="521,136,691,177"/>
+<area shape="rect" id="node7" href="$classsparta_1_1memory_1_1BlockingMemoryIF.html#a2c04f71050bbda78ff6bbf87a57fbc01" title="Implements tryRead." alt="" coords="523,201,689,243"/>
+</map>

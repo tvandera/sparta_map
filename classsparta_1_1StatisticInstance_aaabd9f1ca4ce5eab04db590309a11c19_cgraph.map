@@ -1,0 +1,6 @@
+<map id="sparta::StatisticInstance::getRawLatest" name="sparta::StatisticInstance::getRawLatest">
+<area shape="rect" id="node1" title="Returns the Raw latest value of the this instance for whatever statistic or counter it contains...." alt="" coords="5,78,168,119"/>
+<area shape="rect" id="node2" href="$classsparta_1_1statistics_1_1expression_1_1Expression.html#a05a18ad267fa67d1948c45292980bfc8" title="Compute value of this operate in simulation for the current computation window." alt="" coords="218,5,377,61"/>
+<area shape="rect" id="node3" href="$classsparta_1_1CounterBase.html#a31d36b265b2bc10db58b1461cd63c516" title="Gets the value of this counter." alt="" coords="216,85,379,112"/>
+<area shape="rect" id="node4" href="$classsparta_1_1ParameterBase.html#a593f164c8173d78b7d1cfaf1866bf070" title="Gets the value of this parameter as a double. \thwo Exception if underlying parameter type is not num..." alt="" coords="220,137,375,178"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="sparta::operator&lt;&lt;" name="sparta::operator&lt;&lt;">
+<area shape="rect" id="node1" title="TreeNode stream operator." alt="" coords="5,31,132,57"/>
+<area shape="rect" id="node2" href="$classsparta_1_1TreeNode.html#ab76a73f2f862a47e969c212f2ac16d85" title="Create a string representation of this node." alt="" coords="180,31,355,57"/>
+<area shape="rect" id="node3" href="$classsparta_1_1TreeNode.html#a1a6d4aac10bfa5345b587d84170441de" title=" " alt="" coords="407,5,602,32"/>
+<area shape="rect" id="node4" href="$classsparta_1_1TreeNode.html#abeb9301d222aa616093a280921f65d4a" title="Render tags to a string in the form: &quot; tags:[tag0, tag1]&quot; If there are any tags. The leading space ma..." alt="" coords="403,56,607,83"/>
+</map>

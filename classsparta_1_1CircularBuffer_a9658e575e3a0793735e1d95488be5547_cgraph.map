@@ -1,0 +1,6 @@
+<map id="sparta::CircularBuffer::rend" name="sparta::CircularBuffer::rend">
+<area shape="rect" id="node1" title="Returns an iterator referring to past&#45;the&#45;end of the newest element in the CircularBuffer." alt="" coords="5,27,148,69"/>
+<area shape="rect" id="node2" href="$classsparta_1_1CircularBuffer.html#aa0ff55cf5edc628d9ff8b94abe8f3879" title="Get the iterator pointing to the oldest entry of CircularBuffer." alt="" coords="196,27,339,69"/>
+<area shape="rect" id="node3" href="$classsparta_1_1CircularBuffer.html#a3deb0d81bff935b9dcc23841d3b60276" title="Returns an iterator referring to past&#45;the&#45;end of the newest element in the CircularBuffer." alt="" coords="387,5,556,32"/>
+<area shape="rect" id="node4" href="$classsparta_1_1CircularBuffer.html#a5a4d02babc4261d1066c8f4c7d49c6c9" title="Return the number of valid entries." alt="" coords="400,57,543,98"/>
+</map>

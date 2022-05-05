@@ -1,0 +1,5 @@
+<map id="sparta::Pipeline::registerHandlerAtStage" name="sparta::Pipeline::registerHandlerAtStage">
+<area shape="rect" id="node1" title="Register event handler for a designated pipeline stage." alt="" coords="5,23,164,65"/>
+<area shape="rect" id="node2" href="$classsparta_1_1Clock.html#aa2d29cba2726bcc43077de19218307ff" title=" " alt="" coords="212,5,391,32"/>
+<area shape="rect" id="node3" href="$classsparta_1_1Pipeline.html#aca25172a94332e6f29f0c61412f95fc3" title="Indicate the pipeline size." alt="" coords="232,56,371,83"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="sparta::CounterBase::operator counter_type" name="sparta::CounterBase::operator counter_type">
+<area shape="rect" id="node1" title="Cast operator to get value of the counter." alt="" coords="5,5,157,47"/>
+<area shape="rect" id="node2" href="$classsparta_1_1CounterBase.html#a31d36b265b2bc10db58b1461cd63c516" title="Gets the value of this counter." alt="" coords="205,13,368,39"/>
+</map>

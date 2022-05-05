@@ -1,0 +1,6 @@
+<map id="sparta::collection::DelayedCollectable::collect" name="sparta::collection::DelayedCollectable::collect">
+<area shape="rect" id="node1" title="Explicitly collect a value in the future." alt="" coords="5,22,144,78"/>
+<area shape="rect" id="node2" href="$classsparta_1_1collection_1_1Collectable.html#a56d9cf5ee0cc7e0897413afc6b73c541" title=" " alt="" coords="192,29,328,71"/>
+<area shape="rect" id="node3" href="$classsparta_1_1collection_1_1Collectable.html#a6506b3af9a7da969befd4d11536881dc" title=" " alt="" coords="376,29,547,71"/>
+<area shape="rect" id="node4" href="$classsparta_1_1collection_1_1CollectableTreeNode.html#ab1534ea1db6db3c3587f8da0cfef1aa1" title="Determine whether or not this node has collection turned on or off." alt="" coords="595,22,744,78"/>
+</map>

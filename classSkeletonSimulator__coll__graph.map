@@ -1,0 +1,17 @@
+<map id="SkeletonSimulator" name="SkeletonSimulator">
+<area shape="rect" id="node1" title="SkeletonSimulator which builds the model and configures it." alt="" coords="1361,220,1489,247"/>
+<area shape="rect" id="node2" href="$classsparta_1_1app_1_1Simulation.html" title="Simulator which builds a sparta DeviceTree." alt="" coords="1160,220,1312,247"/>
+<area shape="rect" id="node3" href="$classsparta_1_1ClockManager.html" title="Manages building a clock tree." alt="" coords="833,5,980,32"/>
+<area shape="rect" id="node4" href="$classsparta_1_1app_1_1Backtrace.html" title="Backtrace printer. Registers a handler for certain fatal signals and dumps the backtrace if they occu..." alt="" coords="831,56,982,83"/>
+<area shape="rect" id="node5" href="$classsparta_1_1ResourceSet.html" title="Set of published ResourceFactories which can be referenced by name." alt="" coords="837,107,976,133"/>
+<area shape="rect" id="node6" href="$classsparta_1_1Scheduler.html" title="A class that lets you schedule events now and in the future." alt="" coords="845,220,968,247"/>
+<area shape="rect" id="node7" href="$classsparta_1_1RootTreeNode.html" title="TreeNode which represents the root (&quot;top&quot;) of a device tree." alt="" coords="596,189,744,216"/>
+<area shape="rect" id="node8" href="$classsparta_1_1TreeNode.html" title="Node in a composite tree representing a sparta Tree item." alt="" coords="425,189,547,216"/>
+<area shape="rect" id="node9" href="$classsparta_1_1ResourceContainer.html" title="PhasedObject which can hold 0 or 1 Resource pointers to an associatedresource. Contains logic for set..." alt="" coords="201,155,376,181"/>
+<area shape="rect" id="node10" href="$classsparta_1_1PhasedObject.html" title="Object having a specific phase in the sparta construction paradigm." alt="" coords="5,155,152,181"/>
+<area shape="rect" id="node11" href="$classsparta_1_1ArchDataContainer.html" title="Container class for any number of ArchData pointers owned externally." alt="" coords="202,205,375,232"/>
+<area shape="rect" id="node12" href="$classsparta_1_1app_1_1SimulationConfiguration.html" title="Configuration applicator class that is used for configuring a simulator. Works in conjunction with sp..." alt="" coords="793,271,1020,297"/>
+<area shape="rect" id="node13" href="$classsparta_1_1app_1_1FeatureConfiguration.html" title="Collection of named feature values." alt="" coords="801,321,1012,348"/>
+<area shape="rect" id="node14" href="$classsparta_1_1log_1_1Tap.html" title="Logging Tap. Attach to a TreeNode to intercept logging messages from any NotificationSource nodes in ..." alt="" coords="852,372,961,399"/>
+<area shape="rect" id="node15" href="$classsparta_1_1app_1_1ReportDescriptorCollection.html" title="This collection of ReportDescriptors is designed to never deallocate memory once it has been allocate..." alt="" coords="813,423,1001,465"/>
+</map>

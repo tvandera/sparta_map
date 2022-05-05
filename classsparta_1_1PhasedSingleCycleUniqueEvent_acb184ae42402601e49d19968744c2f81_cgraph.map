@@ -1,0 +1,6 @@
+<map id="sparta::PhasedSingleCycleUniqueEvent::cancel" name="sparta::PhasedSingleCycleUniqueEvent::cancel">
+<area shape="rect" id="node1" title="Cancel the event for now and one cycle into the future." alt="" coords="5,39,181,80"/>
+<area shape="rect" id="node2" href="$classsparta_1_1Scheduleable.html#a5d161f543bb31ef42d1b151c836dad77" title="Cancel all the times that this Scheduleable was placed on the Scheduler." alt="" coords="229,39,372,80"/>
+<area shape="rect" id="node3" href="$classsparta_1_1Scheduler.html#a1c3856191e10dd48f4bf0f0decd2883b" title="Cancel the given Scheduleable if on the Scheduler." alt="" coords="427,5,555,47"/>
+<area shape="rect" id="node4" href="$classsparta_1_1Scheduleable.html#a083999e2a666507a219e321a128d517a" title=" " alt="" coords="420,71,563,112"/>
+</map>

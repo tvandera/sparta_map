@@ -1,0 +1,5 @@
+<map id="sparta::SysCSpartaSchedulerAdapter::SysCSpartaSchedulerAdapter" name="sparta::SysCSpartaSchedulerAdapter::SysCSpartaSchedulerAdapter">
+<area shape="rect" id="node1" title="Initialized the sc_module this adapter is part of." alt="" coords="5,39,251,80"/>
+<area shape="rect" id="node2" href="$classsparta_1_1Scheduler.html#a59f95491f413846800b43f3372afd1f5" title="Returns the frequency (in ticks per simulated second) of this Scheduler." alt="" coords="352,5,480,47"/>
+<area shape="rect" id="node3" href="$classsparta_1_1SysCSpartaSchedulerAdapter.html#a89b827b09d707998bb515f8af6784f03" title="Set simulation complete on the SystemC side via the SC_Sparta_STOP_EVENT_NAME sc_event...." alt="" coords="299,71,533,112"/>
+</map>

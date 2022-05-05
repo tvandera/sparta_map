@@ -1,0 +1,9 @@
+<map id="sparta::serialization::checkpoint::DeltaCheckpoint::stringize" name="sparta::serialization::checkpoint::DeltaCheckpoint::stringize">
+<area shape="rect" id="node1" title="Returns a string describing this object." alt="" coords="5,205,197,261"/>
+<area shape="rect" id="node2" href="$classsparta_1_1serialization_1_1checkpoint_1_1DeltaCheckpoint.html#ac81e696adf31e92766ed9b0c67dfa41f" title="Returns memory usage by the content of this checkpoint." alt="" coords="245,5,437,61"/>
+<area shape="rect" id="node3" href="$classsparta_1_1serialization_1_1checkpoint_1_1Checkpoint.html#a1ab50505bd631547981015601a4f40e8" title="Returns the ID of this checkpoint." alt="" coords="260,85,423,141"/>
+<area shape="rect" id="node4" href="$classsparta_1_1serialization_1_1checkpoint_1_1Checkpoint.html#a41b94da230184ddc69fa469a109ee44f" title="Returns the tick number at which this checkpoint was taken." alt="" coords="260,165,423,221"/>
+<area shape="rect" id="node5" href="$classsparta_1_1serialization_1_1checkpoint_1_1DeltaCheckpoint.html#aee5512c284b0118c4a3dfa39f7576369" title="Returns memory usage by this checkpoint." alt="" coords="245,245,437,301"/>
+<area shape="rect" id="node6" href="$classsparta_1_1serialization_1_1checkpoint_1_1DeltaCheckpoint.html#a34a8164584635a65bf411dead281837b" title="Indicates whether this checkpoint has been flagged deleted." alt="" coords="245,325,437,381"/>
+<area shape="rect" id="node7" href="$classsparta_1_1serialization_1_1checkpoint_1_1DeltaCheckpoint.html#a298af42f2d8f655088a1a61ff91d776b" title="Is this checkpoint a snapshot (contains ALL simulator state)" alt="" coords="245,405,437,461"/>
+</map>

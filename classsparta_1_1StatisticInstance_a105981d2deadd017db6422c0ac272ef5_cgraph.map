@@ -1,0 +1,6 @@
+<map id="sparta::StatisticInstance::getClass" name="sparta::StatisticInstance::getClass">
+<area shape="rect" id="node1" title="Gets the Class associated with this statistic instance." alt="" coords="5,71,168,112"/>
+<area shape="rect" id="node2" href="$classsparta_1_1InstrumentationNode.html#acf049d46b09e3d7934c1f71f355f12a6" title="Gets the class hint of this node. This is invariant after construction." alt="" coords="216,5,401,47"/>
+<area shape="rect" id="node3" href="$classsparta_1_1utils_1_1ValidValue.html#aca75dab39668be5fb02f4e2bb8d5019c" title="Get the value &#45; const version." alt="" coords="231,71,387,112"/>
+<area shape="rect" id="node4" href="$classsparta_1_1utils_1_1ValidValue.html#ae3676d510018298bdc57028aca4efaff" title="Is this value valid." alt="" coords="231,136,387,177"/>
+</map>

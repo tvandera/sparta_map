@@ -1,0 +1,5 @@
+<map id="sparta::TreeNode::broadcastRegistrationForNotificationListStringToChildren_" name="sparta::TreeNode::broadcastRegistrationForNotificationListStringToChildren_">
+<area shape="rect" id="node1" title="Entry point to broadcastRegistrationForNotificationToChildren_ recursion. Breaks a name string." alt="" coords="5,31,203,87"/>
+<area shape="rect" id="node2" href="$classsparta_1_1TreeNode.html#a01d32cacde7a58997e485ab87a50e961" title="Recursively notifies children that the notification described is now (or still is) being observed at ..." alt="" coords="251,5,495,47"/>
+<area shape="rect" id="node3" href="$classsparta_1_1TreeNode.html#a4c2e0aceb5596a4f21fc5e1ad34c2ac7" title="Parses a comma&#45;separated list of notification names (or patterns) separated by commas and ignoring wh..." alt="" coords="261,71,485,112"/>
+</map>

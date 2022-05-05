@@ -1,0 +1,5 @@
+<map id="sparta::DataView::writeInitial_" name="sparta::DataView::writeInitial_">
+<area shape="rect" id="node1" title="Writes the initial value of this DataView into memory. This is guaranteed to be called after placemen..." alt="" coords="5,13,197,39"/>
+<area shape="rect" id="node2" href="$classsparta_1_1DataView.html#a8eb86e6d8d39eef642e6bf53d1f69a78" title=" " alt="" coords="245,13,415,39"/>
+<area shape="rect" id="node3" href="$classsparta_1_1ArchDataSegment.html#ae30270498f1a2a6ab9375fcaf7d2df5c" title="Gets the layout size of this segment (number of bytes)" alt="" coords="463,5,633,47"/>
+</map>

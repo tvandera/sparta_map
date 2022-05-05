@@ -1,0 +1,4 @@
+<map id="sparta::serialization::checkpoint::FastCheckpointer::findInternalCheckpoint" name="sparta::serialization::checkpoint::FastCheckpointer::findInternalCheckpoint">
+<area shape="rect" id="node1" title="Gets a checkpoint through findCheckpoint interface casted to the type of Checkpoint subclass used by ..." alt="" coords="5,5,204,61"/>
+<area shape="rect" id="node2" href="$classsparta_1_1serialization_1_1checkpoint_1_1FastCheckpointer.html#ac148071f4baed77d65246f9a9fb6da12" title="Attempts to find a checkpoint within this checkpointer by ID." alt="" coords="252,5,451,61"/>
+</map>

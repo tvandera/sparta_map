@@ -1,0 +1,13 @@
+<map id="sparta::memory::SimpleMemoryMapNode::write" name="sparta::memory::SimpleMemoryMapNode::write">
+<area shape="rect" id="node1" title="Write a block of memory." alt="" coords="5,199,208,241"/>
+<area shape="rect" id="node2" href="$classsparta_1_1memory_1_1BlockingMemoryIFNode.html#a9af8c79e356ada7d88b1a86c531fbb4e" title="Attempt to write memory of size size at address addr." alt="" coords="274,101,441,142"/>
+<area shape="rect" id="node9" href="$classsparta_1_1memory_1_1SimpleMemoryMap.html#a03897cc554d3c815b6dfea485c1d67c1" title="Determines if a mapping is valid or not." alt="" coords="256,166,459,207"/>
+<area shape="rect" id="node10" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#ae35fa48697f197f9357be0d6c5fae0c6" title="Verifies that the range [addr, addr+size) is within the access windows for this interface." alt="" coords="258,231,457,273"/>
+<area shape="rect" id="node11" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#acb92bd2905d208cab60935b46dcd67a9" title="Verifies that the given address does not span block boundaries defined for this interface." alt="" coords="258,297,457,338"/>
+<area shape="rect" id="node3" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#a4efd1a8b860fd5224a78b4f17f06853d" title="Determines if the given address spans block boundaries defined for this interface...." alt="" coords="507,297,705,338"/>
+<area shape="rect" id="node4" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#a56bff166f0c2e250be9450a8a152becc" title="Determines if the range [addr, addr+size) is within the access windows for this interface." alt="" coords="753,71,952,113"/>
+<area shape="rect" id="node5" href="$classsparta_1_1NotificationSourceBase.html#a8bd1a11753aa860f953f65f25cf22198" title="Is this NotificationSourceBase being observed at this node or an ancestor of any distance." alt="" coords="521,35,691,77"/>
+<area shape="rect" id="node6" href="$classsparta_1_1NotificationSource.html#a7853e8c00ab8e89b96fba9285cf7128e" title="Post with reference to data with parent as message origin." alt="" coords="521,101,691,142"/>
+<area shape="rect" id="node7" href="$classsparta_1_1memory_1_1DebugMemoryIF.html#a1d460c6428bfcb6d1e37b3b908f17eef" title="Attempts to &#39;peek&#39; memory without having any side effects, size&#45;limitations, alignment constraints ex..." alt="" coords="507,166,705,207"/>
+<area shape="rect" id="node8" href="$classsparta_1_1memory_1_1BlockingMemoryIF.html#a73f4639204dbf2a145e07ab7d575d108" title="Implements tryWrite." alt="" coords="523,231,689,273"/>
+</map>

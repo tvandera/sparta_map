@@ -1,0 +1,17 @@
+<map id="sparta::collection::PipelineCollector::PipelineCollector" name="sparta::collection::PipelineCollector::PipelineCollector">
+<area shape="rect" id="node1" title="Instantiate the collector with required parameters before pipeline collection can occur." alt="" coords="5,265,131,321"/>
+<area shape="rect" id="node2" href="$classsparta_1_1TreeNodePrivateAttorney.html#a4cfe23c752f8411f7f946f0626910e9a" title=" " alt="" coords="179,5,389,47"/>
+<area shape="rect" id="node3" href="$classsparta_1_1Scheduler.html#a1ac6fb167a8fbd15b0c2d85061e9ce99" title="Get the internal DAG." alt="" coords="220,71,348,112"/>
+<area shape="rect" id="node4" href="$classsparta_1_1DAG.html#a10d94f366abe416c5fb5754d47bf1b51" title="Get the named GOP point; create it if not found." alt="" coords="201,137,367,163"/>
+<area shape="rect" id="node8" href="$classsparta_1_1Clock.html#a82e1ca55c8ca69966a11a2b81ffcbce0" title="Returns the period of this clock in scheduler ticks." alt="" coords="205,187,363,214"/>
+<area shape="rect" id="node9" href="$classsparta_1_1Scheduleable.html#a89179a9145a4ff37cf37f450c0c33349" title="get the internal Vertex of this scheduleable" alt="" coords="213,239,355,280"/>
+<area shape="rect" id="node10" href="$classsparta_1_1PhasedObject.html#ac8edefaf47c41a0be179827e657955d5" title="Is this node (and thus the entire tree above it) &quot;finalized&quot;." alt="" coords="211,304,357,345"/>
+<area shape="rect" id="node11" href="$classsparta_1_1Scheduler.html#ad57d35535f5ce3d1ce808af3df549552" title="Is the scheduler finalized." alt="" coords="220,369,348,411"/>
+<area shape="rect" id="node12" href="$classsparta_1_1Scheduleable.html#a017c86b15dc4298f385820e2169779e1" title="This event, if continuing == true, will keep the simulation running." alt="" coords="213,435,355,476"/>
+<area shape="rect" id="node13" href="$classsparta_1_1Scheduleable.html#abb13cd12df45ef6b55d3e0146e9399dd" title="Set the clock and scheduler of this Scheduleable." alt="" coords="205,500,363,541"/>
+<area shape="rect" id="node15" href="$classsparta_1_1Scheduleable.html#a04355f3cb8a5f030350d26ac8cd7d898" title="Set the Scheduler of this Scheduleable, and set the local vertex_ to a new vertex from the Vertex Fac..." alt="" coords="213,565,355,607"/>
+<area shape="rect" id="node5" href="$classsparta_1_1DAG.html#a41539cd0534d9987397940e29fa80718" title="Find a GOP point." alt="" coords="683,111,867,138"/>
+<area shape="rect" id="node6" href="$classsparta_1_1DAG.html#ab65ce1ac46015e913ac39cd7fae2f13d" title="Create a new Vertex&#45;GOP point." alt="" coords="437,162,625,189"/>
+<area shape="rect" id="node7" href="$classsparta_1_1DAG.html#a651d357b385d5c4f00de234aa3b54cac" title="Get a new Vertex from the DAGs Vertex Factory Called in a Scheduleable after the scheduler_ has been ..." alt="" coords="673,162,876,189"/>
+<area shape="rect" id="node14" href="$classsparta_1_1Clock.html#aa2d29cba2726bcc43077de19218307ff" title=" " alt="" coords="442,507,621,534"/>
+</map>

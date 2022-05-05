@@ -1,0 +1,6 @@
+<map id="sparta::TreeNode::delegate::from_method" name="sparta::TreeNode::delegate::from_method">
+<area shape="rect" id="node1" title="Creates delegate with given properties." alt="" coords="5,39,181,80"/>
+<area shape="rect" id="node2" href="$classsparta_1_1StringManager.html#a00c28199fcaa46cf51ac5ec32a51aade" title="Returns the StringManager singleton." alt="" coords="229,5,377,47"/>
+<area shape="rect" id="node3" href="$classsparta_1_1StringManager.html#ad1e1496d305428f17d58856738b2b033" title="Stores a string in shared space within this manager unless it is already stored." alt="" coords="229,71,377,112"/>
+<area shape="rect" id="node4" href="$classsparta_1_1StringManager.html#ade0cb930d9444d1219db0336ba23114c" title="Find a string in this manager." alt="" coords="425,71,573,112"/>
+</map>
